@@ -60,6 +60,7 @@
     <Compile Include="Utils\PathExtensionsTest.cs" />
     <Compile Include="Utils\XmlSerializeExtensionsTest.cs" />
     <Compile Include="ValidatableObjectTest.cs" />
+    <Compile Include="Validations\RequiredIfAttributeTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BigEgg.Core\BigEgg.Core.csproj">

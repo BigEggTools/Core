@@ -46,6 +46,7 @@
     <Compile Include="Utils\PathExtensions.cs" />
     <Compile Include="Utils\XmlSerializeExtensions.cs" />
     <Compile Include="ValidatableObject.cs" />
+    <Compile Include="Validations\RequiredIfAttribute.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
