@@ -13,14 +13,14 @@
         {
             var person = new Person()
             {
-                Name = "Bill",
+                Name = "BigEgg",
                 Age = 20,
                 Email = "abc@test.com"
             };
 
             var root = person.ObjectToXElement();
             Assert.AreEqual("Person", root.Name);
-            Assert.AreEqual("Bill", root.Attribute("FullName").Value);
+            Assert.AreEqual("BigEgg", root.Attribute("FullName").Value);
             Assert.IsTrue(root.HasElements);
             Assert.AreEqual(20, int.Parse(root.Element("Age").Value));
             Assert.IsFalse(root.Elements().Any(x => x.Name == "Email"));
@@ -30,14 +30,14 @@
         public void XElementToObjectTest()
         {
             XElement root = new XElement("Person",
-                new XAttribute("FullName", "Bill"),
+                new XAttribute("FullName", "BigEgg"),
                 new XElement("Age", 20),
                 new XElement("Email", "abc@test.com")
                 );
 
             var person = root.XElementToObject<Person>();
             Assert.IsNotNull(person);
-            Assert.AreEqual("Bill", person.Name);
+            Assert.AreEqual("BigEgg", person.Name);
             Assert.AreEqual(20, person.Age);
             Assert.IsTrue(string.IsNullOrWhiteSpace(person.Email));
         }
