@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>BigEgg.Core</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>BigEgg</authors>
+    <owners>BigEgg</owners>
+    <licenseUrl>https://github.com/BigEggTools/Core/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/BigEggTools/Core</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The base library for all BigEgg's projects.</description>
+    <releaseNotes>Support the base library for all BigEgg's projects.</releaseNotes>
+    <copyright>Copyright 2017 BigEgg</copyright>
+    <tags>BigEgg Progress Validation Utils</tags>
+  </metadata>
+</package>
