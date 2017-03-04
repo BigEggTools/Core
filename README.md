@@ -11,3 +11,6 @@ The base library for all BigEgg's projects. Contains:
 * Utility Methods
 * Progress Report Model
 
+# BigEgg.UnitTesting
+The base library for all BigEgg's unit testing projects. Contains:
+* Expected Exception check within a test methods.

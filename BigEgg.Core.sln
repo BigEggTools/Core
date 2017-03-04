@@ -14,6 +14,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigEgg.Core.Tests", "BigEgg.Core.Tests\BigEgg.Core.Tests.csproj", "{A3CF597D-ED47-4DCB-A55D-56E2E68369A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigEgg.UnitTesting", "BigEgg.UnitTesting\BigEgg.UnitTesting.csproj", "{A70395A7-1790-4E49-B8B5-1EB78C65B13C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigEgg.UnitTesting.Tests", "BigEgg.UnitTesting.Tests\BigEgg.UnitTesting.Tests.csproj", "{B985BAE3-F24D-4BFD-9CB9-E16F42F6E786}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +32,14 @@ Global
 		{A3CF597D-ED47-4DCB-A55D-56E2E68369A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3CF597D-ED47-4DCB-A55D-56E2E68369A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3CF597D-ED47-4DCB-A55D-56E2E68369A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A70395A7-1790-4E49-B8B5-1EB78C65B13C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A70395A7-1790-4E49-B8B5-1EB78C65B13C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A70395A7-1790-4E49-B8B5-1EB78C65B13C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A70395A7-1790-4E49-B8B5-1EB78C65B13C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B985BAE3-F24D-4BFD-9CB9-E16F42F6E786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B985BAE3-F24D-4BFD-9CB9-E16F42F6E786}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B985BAE3-F24D-4BFD-9CB9-E16F42F6E786}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B985BAE3-F24D-4BFD-9CB9-E16F42F6E786}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
