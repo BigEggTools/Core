@@ -51,12 +51,15 @@
         {
             if (!condition)
             {
-                throw new ArgumentException(string.Format(messageFormat, paramName, methodName));
+                var errorMessage = string.IsNullOrWhiteSpace(messageFormat)
+                    ? paramName
+                    : string.Format(messageFormat, paramName, methodName);
+                throw new ArgumentException(errorMessage);
             }
         }
 
         /// <summary>
-        /// Throw an <see cref="ArgumentNullException" /> if the condition is false.
+        /// Throw an <see cref="Exception" /> if the condition is false.
         /// </summary>
         /// <typeparam name="TException">The type of the exception should thrown.</typeparam>
         /// <param name="condition">The check condition.</param>
@@ -67,7 +70,10 @@
         {
             if (!condition)
             {
-                throw (TException)Activator.CreateInstance(typeof(TException), new object[] { string.Format(messageFormat, paramName, methodName) });
+                var errorMessage = string.IsNullOrWhiteSpace(messageFormat)
+                    ? paramName
+                    : string.Format(messageFormat, paramName, methodName);
+                throw (TException)Activator.CreateInstance(typeof(TException), new object[] { errorMessage });
             }
         }
     }

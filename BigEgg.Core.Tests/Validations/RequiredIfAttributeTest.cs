@@ -48,7 +48,6 @@ namespace BigEgg.Tests.Validations
                 person.CoupleName = "BigEgg";
                 validateResult = person.Validate();
                 Assert.IsFalse(validateResult.Any());
-                Assert.AreEqual(Person.CoupleNameErrorMessage, validateResult.Single().ErrorMessage);
             }
 
             [TestMethod]
