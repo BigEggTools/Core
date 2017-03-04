@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		appveyor-ci.yml = appveyor-ci.yml
 		appveyor-release.yml = appveyor-release.yml
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigEgg.Core.Tests", "BigEgg.Core.Tests\BigEgg.Core.Tests.csproj", "{A3CF597D-ED47-4DCB-A55D-56E2E68369A1}"
