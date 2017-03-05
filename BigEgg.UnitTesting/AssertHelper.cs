@@ -1,6 +1,7 @@
 ﻿namespace BigEgg.UnitTesting
 {
     using System;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// This class contains assert methods which can be used in unit tests.
@@ -29,5 +30,29 @@
 
             throw new AssertException($"Test method did not throw expected exception {typeof(T).Name}");
         }
+
+        /// <summary>
+        /// Asserts that the execution of the provided action throws the specified exception.
+        /// </summary>
+        /// <typeparam name="T">The expected exception type</typeparam>
+        /// <param name="action">The action to execute.</param>
+        public static async Task ExpectedExceptionAsync<T>(Func<Task> asyncAction) where T : Exception
+        {
+            if (asyncAction == null) { throw new ArgumentNullException("asyncAction"); }
+
+            try
+            {
+                await asyncAction();
+            }
+            catch (Exception ex)
+            {
+                if (ex.GetType() == typeof(T)) { return; }
+
+                throw new AssertException($"Test method threw exception {ex.GetType().Name}, but exception {typeof(T).Name} was expected. Exception message: {ex.GetType().Name}: {ex.Message}");
+            }
+
+            throw new AssertException($"Test method did not throw expected exception {typeof(T).Name}");
+        }
+
     }
 }

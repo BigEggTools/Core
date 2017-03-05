@@ -1,6 +1,8 @@
 ﻿namespace BigEgg.UnitTesting.Tests
 {
     using System;
+    using System.Threading.Tasks;
+    using System.Threading;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     public class AssertHelperTest
@@ -42,6 +44,55 @@
             }
 
             private static void DoNothing() { }
+        }
+
+        [TestClass]
+        public class ExpectedExceptionAsyncTest
+        {
+            [TestMethod]
+            [ExpectedException(typeof(ArgumentNullException))]
+            public async Task Null()
+            {
+                await AssertHelper.ExpectedExceptionAsync<InvalidOperationException>(null);
+            }
+
+            [TestMethod]
+            public async Task HandleException()
+            {
+                await AssertHelper.ExpectedExceptionAsync<ArgumentNullException>(ThrowsArgumentNullExceptionAsync);
+            }
+
+            [TestMethod]
+            [ExpectedException(typeof(AssertException))]
+            public async Task HandleWrongException()
+            {
+                await AssertHelper.ExpectedExceptionAsync<ArgumentException>(ThrowsArgumentNullExceptionAsync);
+            }
+
+            [TestMethod]
+            [ExpectedException(typeof(AssertException))]
+            public async Task NoException()
+            {
+                await AssertHelper.ExpectedExceptionAsync<ArgumentNullException>(DoNothingAsync);
+            }
+
+
+            private static async Task ThrowsArgumentNullExceptionAsync()
+            {
+                await Task.Run(() =>
+                {
+                    Thread.Sleep(1000);
+                    throw new ArgumentNullException();
+                });
+            }
+
+            private static async Task DoNothingAsync()
+            {
+                await Task.Run(() =>
+                {
+                    Thread.Sleep(1000);
+                });
+            }
         }
     }
 }
