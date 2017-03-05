@@ -45,6 +45,11 @@
         /// </value>
         public bool IsInverted { get; set; }
 
+        /// <summary>
+        /// Gets a value that indicates whether the attribute requires validation context.
+        /// </summary>
+        public override bool RequiresValidationContext { get { return true; } }
+
 
         /// <summary>
         /// Validates the specified value with respect to the current validation attribute.

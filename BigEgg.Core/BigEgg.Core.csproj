@@ -48,6 +48,7 @@
     <Compile Include="Utils\PathExtensions.cs" />
     <Compile Include="Utils\XmlSerializeExtensions.cs" />
     <Compile Include="ValidatableObject.cs" />
+    <Compile Include="Validations\MinimumElementsAttribute.cs" />
     <Compile Include="Validations\RequiredIfAttribute.cs" />
   </ItemGroup>
   <ItemGroup>

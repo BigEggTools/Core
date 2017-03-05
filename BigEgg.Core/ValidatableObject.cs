@@ -16,7 +16,7 @@
         /// <returns>
         /// A collection that holds failed-validation information.
         /// </returns>
-        public IEnumerable<ValidationResult> Validate()
+        public virtual IEnumerable<ValidationResult> Validate()
         {
             List<ValidationResult> validationResults = new List<ValidationResult>();
             Validator.TryValidateObject(this, new ValidationContext(this), validationResults, true);
