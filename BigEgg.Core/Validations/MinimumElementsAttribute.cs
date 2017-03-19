@@ -35,6 +35,15 @@
 
 
         /// <summary>
+        /// Gets or sets a value indicating whether the validation allow null.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if the validation allow null; otherwise, <c>false</c>.
+        /// </value>
+        public bool AllowNull { get; set; }
+
+
+        /// <summary>
         /// Returns true if the data field (list) has at least some elements.
         /// </summary>
         /// <param name="value">The value of the object to validate.</param>
@@ -43,6 +52,8 @@
         /// </returns>
         public override bool IsValid(object value)
         {
+            if (value == null && AllowNull) { return true; }
+
             Preconditions.Check<ValidationException>(value is IList, $"The property should be a list.");
 
             var list = value as IList;
