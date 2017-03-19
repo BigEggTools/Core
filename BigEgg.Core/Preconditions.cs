@@ -1,6 +1,7 @@
 ﻿namespace BigEgg
 {
     using System;
+    using System.Collections.Generic;
     using System.Runtime.CompilerServices;
 
     /// <summary>
@@ -36,6 +37,21 @@
             if (string.IsNullOrWhiteSpace(value))
             {
                 throw new ArgumentException($"Parameter '{paramName}' in '{methodName}' should not be empty string.");
+            }
+        }
+
+        /// <summary>
+        /// Throw an <see cref="ArgumentException" /> if a specified list is null or empty.
+        /// </summary>
+        /// <param name="data">The data.</param>
+        /// <param name="paramName">The name of the parameter that caused the exception.</param>
+        /// <param name="methodName">Name of the method.</param>
+        /// <exception cref="System.ArgumentException"></exception>
+        public static void NotEmpty(IList<object> data, string paramName = "", [CallerMemberName] string methodName = "")
+        {
+            if (data == null || data.Count == 0)
+            {
+                throw new ArgumentException($"Parameter '{paramName}' in '{methodName}' should not be null or empty list.");
             }
         }
 
