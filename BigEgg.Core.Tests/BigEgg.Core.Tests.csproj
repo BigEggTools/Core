@@ -61,12 +61,17 @@
     <Compile Include="Utils\PathExtensionsTest.cs" />
     <Compile Include="Utils\XmlSerializeExtensionsTest.cs" />
     <Compile Include="ValidatableObjectTest.cs" />
+    <Compile Include="Validations\MinimumElementsAttributeTest.cs" />
     <Compile Include="Validations\RequiredIfAttributeTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BigEgg.Core\BigEgg.Core.csproj">
       <Project>{34CE1CF3-A6C4-4022-BC02-6985FEEB9473}</Project>
       <Name>BigEgg.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BigEgg.UnitTesting\BigEgg.UnitTesting.csproj">
+      <Project>{a70395a7-1790-4e49-b8b5-1eb78c65b13c}</Project>
+      <Name>BigEgg.UnitTesting</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

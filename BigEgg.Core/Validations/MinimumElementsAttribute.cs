@@ -2,21 +2,24 @@
 {
     using System;
     using System.Collections;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     /// <summary>
-    /// Specifies that a data field (a list) have at lease some elements.
+    /// Specifies that a data field (a IEnumerable property) have at lease some elements.
     /// </summary>
+    /// <seealso cref="IEnumerable"/>
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
     public class MinimumElementsAttribute : ValidationAttribute
     {
-
         /// <summary>
         /// Initializes a new instance of the <see cref="MinimumElementsAttribute"/> class.
         /// </summary>
         /// <param name="minElementsCount">The minimum elements count.</param>
         public MinimumElementsAttribute(int minElementsCount)
         {
+            Preconditions.Check(minElementsCount >= 0, "The minimum elements count cannot less than 0.");
+
             MinElementsCount = minElementsCount;
         }
 
@@ -48,16 +51,32 @@
         /// </summary>
         /// <param name="value">The value of the object to validate.</param>
         /// <returns>
-        /// true if if the data field (list) has at least some elements; otherwise, false.
+        /// true if the data field (list) has at least some elements; otherwise, false.
         /// </returns>
         public override bool IsValid(object value)
         {
-            if (value == null && AllowNull) { return true; }
+            if (value == null) { return AllowNull; }
+            Preconditions.Check<ValidationException>(value is IEnumerable, $"The property should be a IEnumerable data.");
 
-            Preconditions.Check<ValidationException>(value is IList, $"The property should be a list.");
+            var count = 0;
 
-            var list = value as IList;
-            return list.Count >= MinElementsCount;
+            if (value is ICollection)
+            {
+                count = (value as ICollection).Count;
+            }
+            else if (value is ICollection<object>)
+            {
+                count = (value as ICollection<object>).Count;
+            }
+            else
+            {
+                var enumerator = (value as IEnumerable).GetEnumerator();
+                while (enumerator.MoveNext())
+                {
+                    count++;
+                }
+            }
+            return count >= MinElementsCount;
         }
     }
 }
