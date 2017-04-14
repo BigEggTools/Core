@@ -78,7 +78,17 @@
                 var data = new DataInfo() { Data = new string[0] };
                 Assert.IsTrue(data.Validate().Any());
 
-                data = new DataInfo() { Data = new string[1] };
+                data = new DataInfo() { Data = new string[1] { "test" } };
+                Assert.IsFalse(data.Validate().Any());
+            }
+
+            [TestMethod]
+            public void Array_2()
+            {
+                var data = new DataInfo() { Data = new BitArray(0) };
+                Assert.IsTrue(data.Validate().Any());
+
+                data = new DataInfo() { Data = new BitArray(new bool[] { true ,true, false, false}) };
                 Assert.IsFalse(data.Validate().Any());
             }
 

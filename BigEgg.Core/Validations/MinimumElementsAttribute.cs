@@ -4,6 +4,7 @@
     using System.Collections;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Linq;
 
     /// <summary>
     /// Specifies that a data field (a IEnumerable property) have at lease some elements.
@@ -67,6 +68,14 @@
             else if (value is ICollection<object>)
             {
                 count = (value as ICollection<object>).Count;
+            }
+            else if (value is IEnumerable<object>)
+            {
+                using (var enumerator = (value as IEnumerable<object>).GetEnumerator())
+                while (enumerator.MoveNext())
+                {
+                    count++;
+                }
             }
             else
             {
