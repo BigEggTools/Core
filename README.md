@@ -14,6 +14,14 @@ The base library for all BigEgg's projects. Contains:
   * Require If Validation Attributes
   * Minimum Elements Validation Attribute
 * Utility Methods
+  * Dictionary
+    * AddOrUpdate
+    * AddOrUpdateForList
+  * Path
+    * GetRelativePath
+  * XmlSerialize
+    * ObjectToXElement
+    * XElementToObject
 * Progress Report Model
 
 # BigEgg.UnitTesting
