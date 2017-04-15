@@ -2,6 +2,8 @@
 {
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System.Collections.Generic;
+    using System.Collections;
 
     public class PreconditionsTest
     {
@@ -138,6 +140,98 @@
                 catch (NotSupportedException ex)
                 {
                     Assert.IsTrue(ex.Message.Contains("'param'"));
+                    Assert.IsTrue(ex.Message.Contains("'Message'"));
+                }
+            }
+        }
+
+        [TestClass]
+        public class GenericCollectionNotEmptyTest
+        {
+            [TestMethod]
+            public void NotEmpty()
+            {
+                ICollection<string> data = new List<string>() { "test" };
+
+                Preconditions.NotEmpty(data, "data");
+            }
+
+            [TestMethod]
+            [ExpectedException(typeof(ArgumentException))]
+            public void Empty()
+            {
+                ICollection<string> data = new List<string>();
+
+                Preconditions.NotEmpty(data, "data");
+            }
+
+            [TestMethod]
+            [ExpectedException(typeof(ArgumentException))]
+            public void Null()
+            {
+                ICollection<string> data = null;
+
+                Preconditions.NotEmpty(data, "data");
+            }
+
+            [TestMethod]
+            public void Message()
+            {
+                try
+                {
+                    ICollection<string> data = new List<string>();
+
+                    Preconditions.NotEmpty(data, "data");
+                }
+                catch (ArgumentException ex)
+                {
+                    Assert.IsTrue(ex.Message.Contains("'data'"));
+                    Assert.IsTrue(ex.Message.Contains("'Message'"));
+                }
+            }
+        }
+
+        [TestClass]
+        public class GenericEnumerableNotEmptyTest
+        {
+            [TestMethod]
+            public void NotEmpty()
+            {
+                IEnumerable<string> data = new List<string>() { "test" };
+
+                Preconditions.NotEmpty(data, "data");
+            }
+
+            [TestMethod]
+            [ExpectedException(typeof(ArgumentException))]
+            public void Empty()
+            {
+                IEnumerable<string> data = new List<string>();
+
+                Preconditions.NotEmpty(data, "data");
+            }
+
+            [TestMethod]
+            [ExpectedException(typeof(ArgumentException))]
+            public void Null()
+            {
+                IEnumerable<string> data = null;
+
+                Preconditions.NotEmpty(data, "data");
+            }
+
+            [TestMethod]
+            public void Message()
+            {
+                try
+                {
+                    IEnumerable<string> data = new List<string>();
+
+                    Preconditions.NotEmpty(data, "data");
+                }
+                catch (ArgumentException ex)
+                {
+                    Assert.IsTrue(ex.Message.Contains("'data'"));
                     Assert.IsTrue(ex.Message.Contains("'Message'"));
                 }
             }

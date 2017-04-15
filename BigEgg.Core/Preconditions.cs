@@ -1,6 +1,7 @@
 ﻿namespace BigEgg
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Runtime.CompilerServices;
 
@@ -41,15 +42,66 @@
         }
 
         /// <summary>
-        /// Throw an <see cref="ArgumentException" /> if a specified list is null or empty.
+        /// Throw an <see cref="ArgumentException" /> if a specified collection is null or empty.
+        /// </summary>
+        /// <typeparam name="T">The type.</typeparam>
+        /// <param name="data">The data.</param>
+        /// <param name="paramName">The name of the parameter that caused the exception.</param>
+        /// <param name="methodName">Name of the method.</param>
+        /// <exception cref="System.ArgumentException"></exception>
+        public static void NotEmpty<T>(ICollection<T> data, string paramName = "", [CallerMemberName] string methodName = "")
+        {
+            if (data == null || data.Count == 0)
+            {
+                throw new ArgumentException($"Parameter '{paramName}' in '{methodName}' should not be null or empty list.");
+            }
+        }
+
+        /// <summary>
+        /// Throw an <see cref="ArgumentException" /> if a specified collection is null or empty.
         /// </summary>
         /// <param name="data">The data.</param>
         /// <param name="paramName">The name of the parameter that caused the exception.</param>
         /// <param name="methodName">Name of the method.</param>
         /// <exception cref="System.ArgumentException"></exception>
-        public static void NotEmpty(IList<object> data, string paramName = "", [CallerMemberName] string methodName = "")
+        public static void NotEmpty(ICollection data, string paramName = "", [CallerMemberName] string methodName = "")
         {
             if (data == null || data.Count == 0)
+            {
+                throw new ArgumentException($"Parameter '{paramName}' in '{methodName}' should not be null or empty list.");
+            }
+        }
+
+        /// <summary>
+        /// Throw an <see cref="ArgumentException" /> if a specified enumeration is null or empty.
+        /// </summary>
+        /// <typeparam name="T">The type.</typeparam>
+        /// <param name="data">The data.</param>
+        /// <param name="paramName">The name of the parameter that caused the exception.</param>
+        /// <param name="methodName">Name of the method.</param>
+        /// <exception cref="System.ArgumentException"></exception>
+        public static void NotEmpty<T>(IEnumerable<T> data, string paramName = "", [CallerMemberName] string methodName = "")
+        {
+            if (data == null)
+            {
+                using (var enumerator = (data as IEnumerable<object>).GetEnumerator())
+                if (!enumerator.MoveNext())
+                {
+                    throw new ArgumentException($"Parameter '{paramName}' in '{methodName}' should not be null or empty list.");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Throw an <see cref="ArgumentException" /> if a specified enumeration is null or empty.
+        /// </summary>
+        /// <param name="data">The data.</param>
+        /// <param name="paramName">The name of the parameter that caused the exception.</param>
+        /// <param name="methodName">Name of the method.</param>
+        /// <exception cref="System.ArgumentException"></exception>
+        public static void NotEmpty(IEnumerable data, string paramName = "", [CallerMemberName] string methodName = "")
+        {
+            if (data == null || !data.GetEnumerator().MoveNext())
             {
                 throw new ArgumentException($"Parameter '{paramName}' in '{methodName}' should not be null or empty list.");
             }
