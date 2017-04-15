@@ -6,6 +6,10 @@
 # BigEgg.Core
 The base library for all BigEgg's projects. Contains:
 * Preconditions
+  * NotNull
+  * NotNullOrWhiteSpace
+  * NotEmpty
+  * Check
 * Validation Object
   * Require If Validation Attributes
   * Minimum Elements Validation Attribute
