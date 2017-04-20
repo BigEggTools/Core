@@ -69,11 +69,13 @@
         {
             if (data == null)
             {
-                using (var enumerator = (data as IEnumerable<object>).GetEnumerator())
-                if (!enumerator.MoveNext())
-                {
-                    throw new ArgumentException($"Parameter '{paramName}' in '{methodName}' should not be null or empty list.");
-                }
+                throw new ArgumentException($"Parameter '{paramName}' in '{methodName}' should not be null or empty list.");
+            }
+
+            using (var enumerator = (data as IEnumerable<object>).GetEnumerator())
+            if (!enumerator.MoveNext())
+            {
+                throw new ArgumentException($"Parameter '{paramName}' in '{methodName}' should not be null or empty list.");
             }
         }
 
