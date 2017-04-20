@@ -58,21 +58,6 @@
         }
 
         /// <summary>
-        /// Throw an <see cref="ArgumentException" /> if a specified collection is null or empty.
-        /// </summary>
-        /// <param name="data">The data.</param>
-        /// <param name="paramName">The name of the parameter that caused the exception.</param>
-        /// <param name="methodName">Name of the method.</param>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static void NotEmpty(ICollection data, string paramName = "", [CallerMemberName] string methodName = "")
-        {
-            if (data == null || data.Count == 0)
-            {
-                throw new ArgumentException($"Parameter '{paramName}' in '{methodName}' should not be null or empty list.");
-            }
-        }
-
-        /// <summary>
         /// Throw an <see cref="ArgumentException" /> if a specified enumeration is null or empty.
         /// </summary>
         /// <typeparam name="T">The type.</typeparam>
@@ -89,21 +74,6 @@
                 {
                     throw new ArgumentException($"Parameter '{paramName}' in '{methodName}' should not be null or empty list.");
                 }
-            }
-        }
-
-        /// <summary>
-        /// Throw an <see cref="ArgumentException" /> if a specified enumeration is null or empty.
-        /// </summary>
-        /// <param name="data">The data.</param>
-        /// <param name="paramName">The name of the parameter that caused the exception.</param>
-        /// <param name="methodName">Name of the method.</param>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static void NotEmpty(IEnumerable data, string paramName = "", [CallerMemberName] string methodName = "")
-        {
-            if (data == null || !data.GetEnumerator().MoveNext())
-            {
-                throw new ArgumentException($"Parameter '{paramName}' in '{methodName}' should not be null or empty list.");
             }
         }
 
